@@ -1,0 +1,22 @@
+[
+  {"title": "Simpsons Hit & Run",
+    "position": "#1",
+    "year": 2003,
+    "publishers": ["Vivendi Games", "Sierra Entertainment", "Fox Interactive"],
+    "rating" : 8.3,
+    "image": "simpsons"},
+
+  {"title": "Need For Speed: Underground 2",
+    "position": "#2",
+    "year": 2004,
+    "publishers": ["EA Black Box", "Electronic Arts"],
+    "rating": 9.1,
+    "image": "nfs"},
+
+  {"title": "Tony Hawk's Underground 2",
+    "position": "#3",
+    "year": 2004,
+    "publishers":  ["Activision"],
+    "rating": 8.6,
+    "image": "tonyhawk"}
+]
