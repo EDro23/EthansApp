@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, StyleSheet } from "react-native";
 
 export default function Game( {gameData, image}) {
 
@@ -12,7 +12,23 @@ export default function Game( {gameData, image}) {
             {
                gameData.publishers.map( (publisher) => <Text key={publisher}>{publisher} </Text> )
             }
-            <Image source={image}/>
+            <Image source={image} style={styles.image} resizeMode="contain"/>
         </>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        marginVertical: 20,
+        },
+        title: {
+            fontSize: 24,
+            marginBottom: 10,
+            },
+        image: {
+            width: 500,
+            height: 400,
+            borderRadius: 10,
+            },
+        });

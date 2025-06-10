@@ -1,4 +1,4 @@
-import { Text, View, Image, Button } from "react-native";
+import { Text, View, Image, Button, StyleSheet } from "react-native";
 import { useState } from "react"
 import Games from "../Components/Games.jsx";
 import Pressable from "../Components/Button.jsx"
@@ -33,17 +33,14 @@ export default function Index() {
       <Games gameData={gameData[gameIndex]}
       image={images[gameData[gameIndex].image]} />
 
-      {[0, 1, 2].map(index) => (
-          <pressable
-            key={index}
-            label={`Game ${index +1}`}
-            onPress={() => setGameIndex(index)}
-            isActive={gameIndex === index}
-            />
-          )}
-
-      <Pressable label="Switch Game" onPress={ () => setGameIndex( (gameIndex + 1) % gameData.length)}/>
-
+      {[0, 1, 2].map((index) => (
+        <Pressable
+          key={index}
+          label={`Game ${index + 1}`}
+          onPress={() => setGameIndex(index)}
+          isActive={gameIndex === index}
+        />
+      ))}
     </View>
   );
 }
