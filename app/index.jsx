@@ -25,10 +25,24 @@ export default function Index() {
       }}
     >
         <Text style={{
-                        fontSize: 50
-                      }}>Top 3 PS2 Games</Text>
-      <Games gameData={gameData[gameIndex]} image={images[gameData[gameIndex].image]} />
-      <Pressable title="Switch Game" onPress={ () => setGameIndex( (gameIndex + 1) % gameData.length)}/>
+            fontSize: 50
+            }}>
+            Top 3 PS2 Games
+                  </Text>
+
+      <Games gameData={gameData[gameIndex]}
+      image={images[gameData[gameIndex].image]} />
+
+      {[0, 1, 2].map(index) => (
+          <pressable
+            key={index}
+            label={`Game ${index +1}`}
+            onPress={() => setGameIndex(index)}
+            isActive={gameIndex === index}
+            />
+          )}
+
+      <Pressable label="Switch Game" onPress={ () => setGameIndex( (gameIndex + 1) % gameData.length)}/>
 
     </View>
   );
