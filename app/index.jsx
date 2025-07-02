@@ -1,46 +1,48 @@
-import { Text, View, Image, Button, StyleSheet } from "react-native";
-import { useState } from "react"
-import Games from "../Components/Games.jsx";
-import Pressable from "../Components/Button.jsx"
+import { Text, View, Button, StyleSheet } from "react-native";
+import { useState, useContext } from "react";
+import { GameContext } from '../Components/GameContext';
+import Game from '../Components/Games';
 
 const simpsons = require("../assets/images/simpsons.jpeg");
 const nfs = require("../assets/images/nfs2.jpeg");
-const tonyhawk = require("../assets/images/tonyhawk.jpeg")
+const tonyhawk = require("../assets/images/tonyhawk.jpeg");
 
-const images = { "simpsons" : simpsons, "nfs": nfs, "tonyhawk": tonyhawk};
-
-import gameData from "../assets/games.json";
-console.log(gameData);
+const images = { simpsons, nfs, tonyhawk };
 
 export default function Index() {
-
-  const  [gameIndex, setGameIndex] = useState(0);
+  const [gameIndex, setGameIndex] = useState(0);
+  const { gameData } = useContext(GameContext);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-        <Text style={{
-            fontSize: 50
-            }}>
-            Top 3 PS2 Games
-                  </Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>Top 3 PS2 Games</Text>
 
-      <Games gameData={gameData[gameIndex]}
-      image={images[gameData[gameIndex].image]} />
+      <Game
+        gameData={gameData[gameIndex]}
+        image={images[gameData[gameIndex].image]}
+      />
 
+      {/* Buttons to switch games */}
       {[0, 1, 2].map((index) => (
-        <Pressable
+        <Button
           key={index}
-          label={`Game ${index + 1}`}
+          title={`Game ${index + 1}`}
           onPress={() => setGameIndex(index)}
-          isActive={gameIndex === index}
         />
       ))}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+});
